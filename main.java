@@ -6,8 +6,12 @@ public class main {
 	public static void main(String args[]) {
         
         try {
-            AnalyticsCounter ac = new AnalyticsCounter("Project02Eclipse/symptoms.txt");
-            Map<String, Integer> mySymptoms = ac.GetSymptoms();
+            // Initialize AnalyticsCounter Object, argument : path to symptome file 
+            AnalyticsCounter ac = new AnalyticsCounter("symptoms.txt");
+            
+
+            Map<String, Integer> mySymptoms = ac.GetSymptomsRecurrence();
+            
             ac.createFileSymptomeCounter(mySymptoms);
         } catch(Exception e) {
             e.printStackTrace();
