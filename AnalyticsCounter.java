@@ -5,10 +5,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.ArrayList;
 
 public class AnalyticsCounter implements ISymptomReader{
 	String urlFile;
@@ -37,10 +35,9 @@ public class AnalyticsCounter implements ISymptomReader{
 			//iterate map entries
 			for(Map.Entry<String, Integer> entry : listResult.entrySet()){
 				
-				//put symptome and value 
+				//put symptome and value in map 
 				bf.write( entry.getKey() + " : " + entry.getValue() );
 				
-				//new line
 				bf.newLine();
 			}
 			
@@ -50,8 +47,8 @@ public class AnalyticsCounter implements ISymptomReader{
 	}
 
 	@Override
-	public Map<String, Integer> GetSymptoms() throws Exception {
-		// first get input
+	public Map<String, Integer> GetSymptomsRecurrence() throws Exception {
+		// first get input file
 		BufferedReader reader = new BufferedReader (new FileReader(urlFile));
 		String line = reader.readLine();
 
@@ -69,7 +66,7 @@ public class AnalyticsCounter implements ISymptomReader{
 				symptomeCounter.put(line, symptomeCounter.get(line)+1);
 			}
 
-			line = reader.readLine();	// get another symptom
+			line = reader.readLine();	// get next symptom
 		}
 
 		reader.close();
